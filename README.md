@@ -1,28 +1,46 @@
-# Terraform Integration Testing
+### Terraform Integration Test(TINT)
 
-[![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green) [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=oracle-devrel_tint)](https://sonarcloud.io/dashboard?id=oracle-devrel_tint)
+Simple configuration based continuous integration testing tool for terraform developers.
+Performs rich production grade tests on your infrastructure as code.Makes use of opensource terratest framework and sdks and provides a cohesive, user friendly config based approach to write your test cases.
 
-## Introduction
-MISSING
+### How to run the tests:
 
-## Getting Started
-MISSING
+# Download your terraform solution module, below shows an example of http solution:
+```
+$ cd <some-dir>
+$ git clone git@github.com:oracle-terraform-modules/terraform-oci-tdf-block-storage.git
+$ cd <some-dir>/terraform-oci-tdf-block-storage/examples/simple_block_volume
+$ git clone git@orahub.oci.oraclecorp.com:devrel/tint.git
+```
+# Create a folder named test and test_config.yaml file
+```
+$ mkdir test
+$ ls test/test_config.yaml (Refer sample config files on how to write your config file)
+https://confluence.oci.oraclecorp.com/display/ATEAM/Terraform+testing+framework#Terraformtestingframework-Sampletest_config.yamlFile
 
-### Prerequisites
-MISSING
+```
 
-## Notes/Issues
-MISSING
+# Create inputs.yaml file (Optional)
+``` 
+$ ls test/inputs.yaml (This is the input to your terraform module, Note: The name has to be inputs.yaml)
+ 
+Example:
+ 
+dhcp-10-191-131-113:test vsnaik$ cat inputs.yaml
+ 
+default_compartment_id: env.TF_VAR_compartment_id
+```
 
-## URLs
-* Nothing at this time
+# Run the tests:
+```$ cd <some-dir>/terraform-oci-tdf-block-storage/examples/simple_block_volume
+$ cd tint
+$ go test -run TestTint -timeout 30m
+```
 
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
 
 ## License
 Copyright (c) 2021 Oracle and/or its affiliates.
-
 Licensed under the Universal Permissive License (UPL), Version 1.0.
-
 See [LICENSE](LICENSE) for more details.

@@ -1,0 +1,43 @@
+# Copyright (c) 2021 Oracle and/or its affiliates,  All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+version: tintest/appv1
+TinTests:
+
+  #Block Volume..
+  bv1:
+    output: vols
+    terra_checks:
+      display_name: "bv1"
+      size_in_gbs: "62"
+      state: "AVAILABLE"
+      availability_domain: "uFjs:US-ASHBURN-AD-1"
+  bv2:
+    output: vols
+    terra_checks:
+      display_name: "bv2"
+      size_in_gbs: "66"
+      state: "AVAILABLE"
+      availability_domain: "uFjs:US-ASHBURN-AD-1"
+  bv3:
+    output: vols
+    terra_checks:
+      display_name: "bv3"
+      size_in_gbs: "65"
+      state: "AVAILABLE"
+      availability_domain: "uFjs:US-ASHBURN-AD-1"
+
+  vg1:
+    output: vol_grps
+    terra_checks:
+      display_name: "vg1"
+      state: "AVAILABLE"
+      availability_domain: "uFjs:US-ASHBURN-AD-1"
+  vg2:
+    output: vol_grps
+    terra_checks:
+      display_name: "vg2"
+      state: "AVAILABLE"
+      availability_domain: "uFjs:US-ASHBURN-AD-1"
+
+   
